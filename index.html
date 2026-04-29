@@ -15,10 +15,32 @@
 	</head>
 	<body class="is-preload">
 
+		<!-- ============ Video Modal (AIGC mp4 player) ============ -->
+		<!-- Placed at top of body so #video-player exists before main.js runs -->
+			<div id="video-modal" class="custom-modal" aria-hidden="true" role="dialog" aria-modal="true">
+				<div class="custom-modal-backdrop" data-close="video"></div>
+				<div class="custom-modal-panel video-panel">
+					<button class="custom-modal-close" data-close="video" aria-label="Close">×</button>
+					<video id="video-player" controls playsinline preload="metadata"></video>
+				</div>
+			</div>
+
+		<!-- ============ External Video Confirm Modal (Bilibili) ============ -->
+			<div id="external-modal" class="custom-modal" aria-hidden="true" role="dialog" aria-modal="true">
+				<div class="custom-modal-backdrop" data-close="external"></div>
+				<div class="custom-modal-panel confirm-panel">
+					<h3 id="external-title">Open video</h3>
+					<p>This video is hosted on Bilibili. It will open in a new tab.</p>
+					<div class="confirm-actions">
+						<button class="btn-secondary" data-close="external">Cancel</button>
+						<a id="external-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">Open on Bilibili</a>
+					</div>
+				</div>
+			</div>
+
 		<!-- Top Navigation Bar (frosted glass, sticky) -->
 			<nav id="topnav">
 				<div class="nav-inner">
-					<a href="#home" class="nav-link active" data-target="home">Home</a>
 					<a href="#about" class="nav-link" data-target="about">About me</a>
 					<a href="#portfolio" class="nav-link" data-target="portfolio">Portfolio</a>
 					<a href="#contact" class="nav-link" data-target="contact">Contact me</a>
@@ -32,6 +54,7 @@
 				<div class="inner">
 					<a href="#" class="image avatar"><img src="images/avatar-darwin.jpg" alt="" /></a>
 					<h1><strong>I am Darwin</strong></h1>
+					<a>Dawn is coming Open your eyes</a>
 				</div>
 			</header>
 
@@ -41,87 +64,170 @@
 				<!-- One -->
 					<section id="about">
 						<header class="major">
-							<h2>Ipsum lorem dolor aliquam ante commodo<br />
-							magna sed accumsan arcu neque.</h2>
+							<h2>Hi, I'm Darwin, currently a Psychology undergraduate at Peking University.</h2>
 						</header>
-						<p>Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
-						</ul>
+						<p>Grew up in China, think in Chinese, write in English, code in whatever the problem wants. What I keep coming back to is how people decide, remember and connect—the kind of questions psychology asks when it gets serious about data. When I'm not at a desk I tend to end up on a road: I've ridden across more Chinese provinces than I can list from memory, and once pedalled my way out of the country and into Kazakhstan. I've finished a full marathon, train in MMA and Sanda, and will show up for almost any ball sport. I build things with AI that I actually use—some of them end up being genuinely useful, most of them at least teach me something new. I also make a lot of visual work: graphic design, promotional materials, photography, DIY postcards, and video I edit myself. Most of it lives in the portfolio below.</p>
 					</section>
 
 				<!-- Two -->
 					<section id="portfolio">
-						<h2>Recent Work</h2>
+						<h2>Portfolio</h2>
 						<div class="row">
+
+							<!-- AIGC Video (click → play mp4 in lightbox) -->
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
-								<h3>Magna sed consequat tempus</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								<a href="images/portfolio/aigc-milan.mp4" class="image fit thumb video-play" data-poptrox="ignore" data-video="images/portfolio/aigc-milan.mp4">
+									<img src="images/portfolio/thumbs/aigc-milan.png" alt="" />
+									<span class="play-badge" aria-hidden="true">▶</span>
+								</a>
+								<h3>AIGC Video — Milan Winter Olympics</h3>
+								<p>AIGC artwork created for the Milan-Cortina Winter Olympics Global AIGC Competition</p>
+							</article>
+
+							<!-- Bilibili Video: Winter Expedition -->
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="https://www.bilibili.com/video/BV1uu4m1u7mR/" class="image fit thumb video-external" data-poptrox="ignore" data-title="If the River Wind Forgets">
+									<img src="images/portfolio/thumbs/video-winter.png" alt="" />
+									<span class="play-badge" aria-hidden="true">▶</span>
+								</a>
+								<h3>If the River Wind Forgets</h3>
+								<p>Produced in January 2024, a 600-km expedition film capturing the cross-regional cycling journey from Hunan to Guangxi, China.</p>
+							</article>
+
+							<!-- Bilibili Video: Summer Expedition -->
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="https://www.bilibili.com/video/BV1bryYYFE2r/" class="image fit thumb video-external" data-poptrox="ignore" data-title="The Road Leads to a Summer Dream Unfinished">
+									<img src="images/portfolio/thumbs/video-summer.png" alt="" />
+									<span class="play-badge" aria-hidden="true">▶</span>
+								</a>
+								<h3>The Road Leads to a Summer Dream Unfinished</h3>
+								<p>Produced in September 2024, a 2000-km expedition film capturing the cross-regional cycling journey from Guangxi to Yunnan, China.</p>
+							</article>
+
+							<!-- Custom T-shirts -->
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/portfolio/tshirt-silkroad.png" class="image fit thumb"><img src="images/portfolio/thumbs/tshirt-silkroad.png" alt="" /></a>
+								<h3>Custom T-shirt — Silk Road</h3>
+								<p>Inspired by the Silk Road, crafted for sponsors.</p>
 							</article>
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="" /></a>
-								<h3>Ultricies lacinia interdum</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								<a href="images/portfolio/tshirt-2024.png" class="image fit thumb"><img src="images/portfolio/thumbs/tshirt-2024.png" alt="" /></a>
+								<h3>Custom T-shirt for 2024 Summer Expedition</h3>
+								<p>Crafted in June 2024.</p>
 							</article>
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="" /></a>
-								<h3>Tortor metus commodo</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								<a href="images/portfolio/tshirt-2025.jpg" class="image fit thumb"><img src="images/portfolio/thumbs/tshirt-2025.jpg" alt="" /></a>
+								<h3>Custom T-shirt for 2025 Summer Expedition</h3>
+								<p>Designed in June 2025 for the China-Kazakhstan Expedition.</p>
+							</article>
+
+							<!-- Custom Hoodie -->
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/portfolio/hoodie.png" class="image fit thumb"><img src="images/portfolio/thumbs/hoodie.png" alt="" /></a>
+								<h3>Custom Hoodie</h3>
+								<p>Hoodie designed for the Department of Psychology</p>
+							</article>
+
+							<!-- Promotional Flag -->
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/portfolio/flag-promo.png" class="image fit thumb"><img src="images/portfolio/thumbs/flag-promo.png" alt="" /></a>
+								<h3>Promotional Flag</h3>
+								<p>Event promotional flag for exposure in formal communication settings.</p>
+							</article>
+
+							<!-- Posters -->
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/portfolio/poster.jpg" class="image fit thumb"><img src="images/portfolio/thumbs/poster.jpg" alt="" /></a>
+								<h3>Forum Poster</h3>
+								<p>Designed in November 2024 for a formal forum.</p>
 							</article>
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="" /></a>
-								<h3>Quam neque phasellus</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								<a href="images/portfolio/poster-album.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-album.png" alt="" /></a>
+								<h3>Album Cover</h3>
+								<p>Crafted in 2025</p>
 							</article>
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="" /></a>
-								<h3>Nunc enim commodo aliquet</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								<a href="images/portfolio/poster-shangri-la.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-shangri-la.png" alt="" /></a>
+								<h3>"Shangri-La" Postcard</h3>
+								<p>Postcard derived from the scenery of Shangri-La’s photography.</p>
 							</article>
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
-								<h3>Risus ornare lacinia</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								<a href="images/portfolio/poster-citygod.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-citygod.png" alt="" /></a>
+								<h3>City God</h3>
+								<p>Postcard depicting the Chinese city god.</p>
 							</article>
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/portfolio/poster-teacher.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-teacher.png" alt="" /></a>
+								<h3>Teacher</h3>
+								<p>Postcard embodying master-disciple camaraderie.</p>
+							</article>
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/portfolio/poster-bipolardisorder.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-bipolardisorder.png" alt="" /></a>
+								<h3>Bipolar Disorder</h3>
+								<p>Poster artistically depicting bipolar disorder.</p>
+							</article>
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/portfolio/poster-money.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-money.png" alt="" /></a>
+								<h3>Money or Poison</h3>
+								<p>Postcard inspired by <i>The Wolf of Wall Street</i>.</p>
+							</article>
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/portfolio/poster-projectreport.jpg" class="image fit thumb"><img src="images/portfolio/thumbs/poster-projectreport.jpg" alt="" /></a>
+								<h3>Poster for Project Report</h3>
+								<p>Poster designed for a project report.</p>
+							</article>
+
+							<!-- Graphic Design -->
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/portfolio/graphicdesign-solarsystem.png" class="image fit thumb"><img src="images/portfolio/thumbs/graphicdesign-solarsystem.png" alt="" /></a>
+								<h3>Solar System — Graphic Design</h3>
+								<p>Created in October 2025, designed with Adobe Illustrator.</p>
+							</article>
+
+							<!-- Invitation Card -->
+							<article class="col-6 col-12-xsmall work-item">
+								<a href="images/portfolio/invitation.jpg" class="image fit thumb"><img src="images/portfolio/thumbs/invitation.jpg" alt="" /></a>
+								<h3>Wedding Invitation Card</h3>
+								<p>Monetizing personal artistic creation through bespoke wedding invitation design for clients.</p>
+							</article>
+
 						</div>
-						<ul class="actions">
-							<li><a href="#" class="button">Full Portfolio</a></li>
-						</ul>
 					</section>
 
 				<!-- Three -->
 					<section id="contact">
 						<h2>Get In Touch</h2>
-						<p>Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.</p>
+						<p>Feel free to reach out to me. I’m open to postcard swaps with anyone from anywhere. I will send a postcard in return for every one I receive.</p>
 						<div class="row">
 							<div class="col-8 col-12-small">
-								<form method="post" action="#">
+								<form id="contact-form" method="POST" action="https://api.web3forms.com/submit">
+									<input type="hidden" name="access_key" value="422eaf5c-2ad9-4081-b3e4-fe43166263a1">
+									<input type="hidden" name="subject" value="New message from your portfolio site">
+									<input type="hidden" name="from_name" value="Portfolio Contact">
+									<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 									<div class="row gtr-uniform gtr-50">
-										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
+										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" required /></div>
+										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" required /></div>
+										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4" required></textarea></div>
 									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" /></li>
+									</ul>
+									<p id="contact-result" style="margin-top:1em;font-size:0.9em;display:none;"></p>
 								</form>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
 							</div>
 							<div class="col-4 col-12-small">
 								<ul class="labeled-icons">
 									<li>
 										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										1234 Somewhere Rd.<br />
-										Nashville, TN 00000<br />
-										United States
-									</li>
-									<li>
-										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										000-000-0000
+										Building 29, Peking University<br />
+										No. 5 Yiheyuan Road, Haidian District<br />
+										Beijing 100871<br />
+										P.R. China
 									</li>
 									<li>
 										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="#">hello@untitled.tld</a>
+										<a>dw_zhang [at] stu [dot] pku [dot] edu [dot] cn</a>
 									</li>
 								</ul>
 							</div>
@@ -490,14 +596,14 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script>
 				(function() {
 					var navLinks = document.querySelectorAll('#topnav .nav-link');
-					var sections = ['home', 'about', 'portfolio', 'contact'].map(function(id) {
+					var sections = ['about', 'portfolio', 'contact'].map(function(id) {
 						return document.getElementById(id);
 					}).filter(Boolean);
 
 					function updateActive() {
 						var navH = 64;
 						var pos = window.scrollY + navH + 20;
-						var current = 'home';
+						var current = 'about';
 						sections.forEach(function(sec) {
 							if (sec.offsetTop <= pos) current = sec.id;
 						});
@@ -510,6 +616,69 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					updateActive();
 				})();
 			</script>
+
+		<!-- Lightbox close on ESC key -->
+			<script>
+				(function(){
+					document.addEventListener('keydown', function(e){
+						if (e.key === 'Escape') {
+							var closer = document.querySelector('.poptrox-popup .closer');
+							if (closer) closer.click();
+						}
+					});
+				})();
+			</script>
+
+		<!-- Contact form: Web3Forms AJAX submit -->
+			<script>
+				(function() {
+					var form = document.getElementById('contact-form');
+					var result = document.getElementById('contact-result');
+					if (!form) return;
+
+					form.addEventListener('submit', function(e) {
+						e.preventDefault();
+						var formData = new FormData(form);
+						var submitBtn = form.querySelector('input[type="submit"]');
+						var originalBtnValue = submitBtn.value;
+
+						submitBtn.value = 'Sending...';
+						submitBtn.disabled = true;
+						result.style.display = 'block';
+						result.style.color = 'var(--ink-secondary)';
+						result.textContent = 'Please wait...';
+
+						fetch('https://api.web3forms.com/submit', {
+							method: 'POST',
+							body: formData
+						})
+						.then(function(response) { return response.json(); })
+						.then(function(data) {
+							if (data.success) {
+								result.style.color = '#4A6741';
+								result.textContent = '✓ Message sent successfully. Thank you for reaching out — I will get back to you soon.';
+								form.reset();
+							} else {
+								result.style.color = '#B85E47';
+								result.textContent = '✗ Oops! Something went wrong: ' + (data.message || 'please try again later.');
+							}
+						})
+						.catch(function(error) {
+							result.style.color = '#B85E47';
+							result.textContent = '✗ Network error. Please check your connection and try again.';
+						})
+						.finally(function() {
+							submitBtn.value = originalBtnValue;
+							submitBtn.disabled = false;
+							setTimeout(function() {
+								result.style.display = 'none';
+							}, 8000);
+						});
+					});
+				})();
+			</script>
+
+		<!-- ============ Video Modals are defined at the top of <body> to ensure DOM readiness before main.js runs ============ -->
 
 	</body>
 </html>

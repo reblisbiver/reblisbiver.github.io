@@ -7,6 +7,15 @@
 	  4) 顶部磨砂玻璃导航栏（悬浮 sticky）
 */
 
+/* ============ 自定义字体：Dancing Script ============ */
+@font-face {
+	font-family: 'Dancing Script';
+	src: url('../webfonts/DancingScript-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
 :root {
 	--bg-cream: #F5F0E8;       /* 奶油米白 */
 	--ink-primary: #2B2622;
@@ -223,8 +232,10 @@ body, html {
 #header h1 strong {
 	text-align: center !important;
 	color: var(--ink-primary) !important;
-	font-family: Georgia, "Times New Roman", "PingFang SC", serif;
-	line-height: 1.5;
+	font-family: 'Dancing Script', Georgia, "Times New Roman", "PingFang SC", cursive, serif !important;
+	font-weight: normal !important;
+	font-size: 1.5em;
+	line-height: 1.3;
 	text-shadow: 0 1px 2px rgba(245, 240, 232, 0.8);
 }
 
@@ -305,8 +316,149 @@ a:hover {
 	box-shadow: inset 0 0 0 2px #B85E47 !important;
 }
 
+/* 表单 submit 按钮（Send Message）：填充珊瑚橙 + 白字，避免跟米白底融在一起 */
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+	background-color: var(--accent) !important;
+	color: #fff !important;
+	border-color: var(--accent) !important;
+	box-shadow: inset 0 0 0 2px var(--accent) !important;
+	font-weight: 500 !important;
+	letter-spacing: 0.04em !important;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+	background-color: #B85E47 !important;
+	border-color: #B85E47 !important;
+	color: #fff !important;
+	box-shadow: inset 0 0 0 2px #B85E47 !important;
+}
+
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active {
+	background-color: #A5513D !important;
+	border-color: #A5513D !important;
+	color: #fff !important;
+}
+
 .icons a:hover {
 	color: var(--accent) !important;
+}
+
+/* ============ Portfolio Masonry 瀑布流 ============ */
+#portfolio .row {
+	column-count: 3;
+	column-gap: 1.5em;
+	display: block !important;
+}
+
+#portfolio .work-item {
+	width: 100% !important;
+	display: inline-block;
+	margin: 0 0 1.5em 0 !important;
+	padding: 0 !important;
+	break-inside: avoid;
+	-webkit-column-break-inside: avoid;
+	page-break-inside: avoid;
+}
+
+#portfolio .work-item .thumb {
+	display: block;
+	overflow: hidden;
+	border-radius: 6px;
+}
+
+#portfolio .work-item img {
+	width: 100% !important;
+	height: auto !important;
+	display: block;
+	transition: transform 0.4s ease;
+}
+
+#portfolio .work-item .thumb:hover img {
+	transform: scale(1.03);
+}
+
+#portfolio .work-item h3 {
+	font-size: 1em !important;
+	margin: 0.8em 0 0.3em 0 !important;
+	color: var(--ink-primary) !important;
+}
+
+#portfolio .work-item p {
+	font-size: 0.85em !important;
+	color: var(--ink-secondary) !important;
+	margin: 0 !important;
+	line-height: 1.5;
+}
+
+/* 响应式：平板 2 列，手机 1 列 */
+@media screen and (max-width: 980px) {
+	#portfolio .row { column-count: 2; }
+}
+@media screen and (max-width: 480px) {
+	#portfolio .row { column-count: 1; }
+}
+
+/* ============ Lightbox（poptrox） × 关闭按钮：极简、小、不挡画面 ============ */
+.poptrox-popup .closer {
+	opacity: 0.6 !important;
+	width: 2em !important;
+	height: 2em !important;
+	line-height: 2em !important;
+	top: 0.8em !important;
+	right: 0.8em !important;
+	background: transparent !important;
+	border: none !important;
+	border-radius: 0 !important;
+	z-index: 9999 !important;
+	cursor: pointer;
+	transition: opacity 0.2s ease;
+}
+
+.poptrox-popup .closer:before {
+	border: none !important;
+	background: transparent !important;
+	color: #fff !important;
+	opacity: 1 !important;
+	font-size: 1.4em !important;
+	width: auto !important;
+	height: auto !important;
+	line-height: 1 !important;
+	margin: 0 !important;
+	top: 50% !important;
+	left: 50% !important;
+	transform: translate(-50%, -50%);
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.poptrox-popup .closer:hover {
+	opacity: 1 !important;
+	background: transparent !important;
+}
+
+/* Overlay: 锁定不透明度，避免切图时闪白 */
+.poptrox-overlay {
+	background-color: #1a1715 !important;
+	/* 切图动画时 opacity 会被 jQuery 改写，这里用 background-color 保证颜色锁死 */
+}
+
+/* Popup 容器：透明背景、去 padding，只留图片本身 */
+.poptrox-popup {
+	background: transparent !important;
+	background-color: transparent !important;
+	padding: 0 !important;
+	box-shadow: none !important;
+	border-radius: 0 !important;
+}
+
+/* Caption（图片下方标题）：不显示，保持作品原汁原味 */
+.poptrox-popup .caption {
+	display: none !important;
 }
 
 /* ============ 6. 响应式 ============ */
@@ -318,5 +470,191 @@ a:hover {
 	#main, #footer {
 		padding: 2em 1.5em !important;
 	}
+}
+
+/* ============ Video Thumbnails: Play Badge (▶) ============ */
+#portfolio .work-item a.video-play,
+#portfolio .work-item a.video-external {
+	position: relative;
+}
+
+/* 视频卡不显示默认的 "View" 角标，只保留播放键 */
+#portfolio .work-item a.video-play:before,
+#portfolio .work-item a.video-play:after,
+#portfolio .work-item a.video-external:before,
+#portfolio .work-item a.video-external:after {
+	display: none !important;
+	content: none !important;
+}
+
+#portfolio .work-item .play-badge {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 3.4em;
+	height: 3.4em;
+	line-height: 3.4em;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.55);
+	color: #fff;
+	font-size: 1.2em;
+	text-align: center;
+	padding-left: 0.22em;    /* optical centering for ▶ glyph */
+	box-sizing: border-box;
+	pointer-events: none;
+	transition: background 0.25s ease, transform 0.25s ease;
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+#portfolio .work-item a.video-play:hover .play-badge,
+#portfolio .work-item a.video-external:hover .play-badge {
+	background: var(--accent);
+	transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* ============ Custom Modal (AIGC video + Bilibili confirm) ============ */
+.custom-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 10000;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	padding: 2em;
+}
+
+.custom-modal.is-open {
+	display: flex;
+	animation: modalFadeIn 0.25s ease;
+}
+
+@keyframes modalFadeIn {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+.custom-modal-backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(20, 18, 16, 0.75);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	cursor: pointer;
+}
+
+.custom-modal-panel {
+	position: relative;
+	z-index: 1;
+	max-width: 100%;
+	animation: modalPanelIn 0.3s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+@keyframes modalPanelIn {
+	from { opacity: 0; transform: translateY(12px) scale(0.98); }
+	to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+/* Video panel: responsive, keeps aspect ratio */
+.custom-modal-panel.video-panel {
+	width: min(90vw, 1100px);
+}
+
+.custom-modal-panel.video-panel video {
+	display: block;
+	width: 100%;
+	max-height: 85vh;
+	border-radius: 8px;
+	background: #000;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal-close {
+	position: absolute;
+	top: -2.2em;
+	right: 0;
+	width: 2em;
+	height: 2em;
+	line-height: 1;
+	background: transparent;
+	border: none;
+	color: #fff;
+	font-size: 1.8em;
+	cursor: pointer;
+	opacity: 0.7;
+	transition: opacity 0.2s ease;
+	padding: 0;
+}
+
+.custom-modal-close:hover { opacity: 1; }
+
+/* Confirm panel: small card */
+.custom-modal-panel.confirm-panel {
+	width: min(90vw, 420px);
+	background: var(--bg-cream);
+	border-radius: 10px;
+	padding: 2em 1.8em 1.6em 1.8em;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+	text-align: center;
+}
+
+.confirm-panel h3 {
+	font-family: 'Dancing Script', Georgia, serif;
+	font-size: 1.8em;
+	color: var(--ink-primary);
+	margin: 0 0 0.4em 0;
+	line-height: 1.2;
+}
+
+.confirm-panel p {
+	font-size: 0.9em;
+	color: var(--ink-secondary);
+	margin: 0 0 1.4em 0;
+	line-height: 1.5;
+}
+
+.confirm-actions {
+	display: flex;
+	gap: 0.8em;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.confirm-actions .btn-primary,
+.confirm-actions .btn-secondary {
+	display: inline-block;
+	padding: 0.55em 1.3em;
+	border-radius: 6px;
+	font-size: 0.82em;
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	cursor: pointer;
+	border: none;
+	text-decoration: none !important;
+	transition: all 0.2s ease;
+	font-family: inherit;
+}
+
+.confirm-actions .btn-primary {
+	background: var(--accent);
+	color: #fff !important;
+	border-bottom: none !important;
+}
+
+.confirm-actions .btn-primary:hover {
+	background: #B85E47;
+}
+
+.confirm-actions .btn-secondary {
+	background: transparent;
+	color: var(--ink-primary) !important;
+	box-shadow: inset 0 0 0 1.5px rgba(43, 38, 34, 0.25);
+}
+
+.confirm-actions .btn-secondary:hover {
+	background: rgba(43, 38, 34, 0.06);
 }
 

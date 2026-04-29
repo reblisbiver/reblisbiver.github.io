@@ -95,16 +95,83 @@
 
 	// Main Sections: Two.
 
+		// Custom video interactions (MUST run before poptrox binds its handlers)
+			(function() {
+				var $videoModal    = $('#video-modal');
+				var videoPlayerEl  = document.getElementById('video-player');
+				var $externalModal = $('#external-modal');
+				var $externalTitle = $('#external-title');
+				var $externalLink  = $('#external-link');
+
+				function openModal($m) {
+					$m.addClass('is-open').attr('aria-hidden', 'false');
+					$body.css('overflow', 'hidden');
+				}
+				function closeModal($m) {
+					$m.removeClass('is-open').attr('aria-hidden', 'true');
+					$body.css('overflow', '');
+				}
+				function closeVideoModal() {
+					closeModal($videoModal);
+					try { videoPlayerEl.pause(); videoPlayerEl.currentTime = 0; } catch (e) {}
+					videoPlayerEl.removeAttribute('src');
+					videoPlayerEl.load();
+				}
+
+				// Bind BEFORE poptrox — using delegated jQuery handler on #portfolio,
+				// capture phase via "mousedown" is not reliable in jQuery so we use event
+				// namespacing + making sure our handler runs first.
+				$('#portfolio').on('click.customvideo', 'a.video-play', function(e) {
+					e.preventDefault();
+					e.stopImmediatePropagation();
+					var src = $(this).attr('data-video') || $(this).attr('href');
+					videoPlayerEl.setAttribute('src', src);
+					openModal($videoModal);
+					var p = videoPlayerEl.play();
+					if (p && p.catch) p.catch(function() {});
+					return false;
+				});
+
+				$('#portfolio').on('click.customvideo', 'a.video-external', function(e) {
+					e.preventDefault();
+					e.stopImmediatePropagation();
+					$externalTitle.text($(this).attr('data-title') || 'Open video');
+					$externalLink.attr('href', $(this).attr('href'));
+					openModal($externalModal);
+					return false;
+				});
+
+				// Modal close buttons (backdrop / × / cancel)
+				$(document).on('click', '[data-close]', function() {
+					var which = $(this).attr('data-close');
+					if (which === 'video')    closeVideoModal();
+					if (which === 'external') closeModal($externalModal);
+				});
+				// "Open on Bilibili" → dismiss modal shortly after
+				$externalLink.on('click', function() {
+					setTimeout(function() { closeModal($externalModal); }, 50);
+				});
+				// ESC key
+				$(document).on('keydown', function(e) {
+					if (e.key !== 'Escape') return;
+					if ($videoModal.hasClass('is-open'))    closeVideoModal();
+					if ($externalModal.hasClass('is-open')) closeModal($externalModal);
+				});
+			})();
+
 		// Lightbox gallery.
 			$window.on('load', function() {
 
-				$('#two').poptrox({
+				$('#portfolio').poptrox({
 					caption: function($a) { return $a.next('h3').text(); },
-					overlayColor: '#2c2c2c',
-					overlayOpacity: 0.85,
+					overlayColor: '#1a1715',
+					overlayOpacity: 0.92,
+					fadeSpeed: 180,
+					popupSpeed: 180,
 					popupCloserText: '',
 					popupLoaderText: '',
-					selector: '.work-item a.image',
+					// Exclude video thumbs — they are handled above by our custom modal
+					selector: '.work-item a.image:not(.video-play):not(.video-external)',
 					usePopupCaption: true,
 					usePopupDefaultStyling: false,
 					usePopupEasyClose: false,
