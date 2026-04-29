@@ -658,14 +658,17 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								result.style.color = '#4A6741';
 								result.textContent = '✓ Message sent successfully. Thank you for reaching out — I will get back to you soon.';
 								form.reset();
+								alert('✓ Message sent successfully!\n\nThank you for reaching out — I will get back to you soon.');
 							} else {
 								result.style.color = '#B85E47';
 								result.textContent = '✗ Oops! Something went wrong: ' + (data.message || 'please try again later.');
+								alert('✗ Oops! Something went wrong:\n\n' + (data.message || 'please try again later.'));
 							}
 						})
 						.catch(function(error) {
 							result.style.color = '#B85E47';
 							result.textContent = '✗ Network error. Please check your connection and try again.';
+							alert('✗ Network error.\n\nPlease check your connection and try again.');
 						})
 						.finally(function() {
 							submitBtn.value = originalBtnValue;
