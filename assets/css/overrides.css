@@ -122,8 +122,8 @@ body, html {
 	top: auto !important;
 	width: 100% !important;
 	height: auto !important;
-	min-height: calc(620px + var(--nav-height));  /* 补回被导航占用的高度 */
-	padding: calc(var(--nav-height) + 5em) 3em 7em 3em !important;
+	min-height: calc(440px + var(--nav-height));  /* 补回被导航占用的高度 */
+	padding: calc(var(--nav-height) + 2.5em) 3em 2.5em 3em !important;
 
 	background-color: var(--bg-cream) !important;
 	background-image: none !important;
@@ -158,7 +158,7 @@ body, html {
 	left: 0;
 	right: 0;
 	top: 0;
-	height: 120px;
+	height: 40px;
 	background: linear-gradient(
 		to bottom,
 		rgba(245, 240, 232, 0.7) 0%,
@@ -176,7 +176,7 @@ body, html {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	height: 220px;
+	height: 40px;
 	background: linear-gradient(
 		to bottom,
 		rgba(245, 240, 232, 0) 0%,
@@ -261,6 +261,12 @@ body, html {
 	border-top-color: rgba(43, 38, 34, 0.08) !important;
 }
 
+/* 加深 section 的正文段落颜色，对抗米白背景，保持标题沿用模板默认 */
+#main section > p,
+#main section header.major > p {
+	color: var(--ink-primary) !important;
+}
+
 /* ============ 3. Footer ============ */
 #footer {
 	position: relative !important;
@@ -317,6 +323,10 @@ a:hover {
 }
 
 /* 表单 submit 按钮（Send Message）：填充珊瑚橙 + 白字，避免跟米白底融在一起 */
+#contact-form ul.actions {
+	margin-top: 1.8em !important;  /* Send Message 和输入框之间留出呼吸空间 */
+}
+
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
