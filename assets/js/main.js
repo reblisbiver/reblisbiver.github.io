@@ -95,6 +95,16 @@
 
 	// Main Sections: Two.
 
+		// Analytics helper (Umami) — no-op if umami not loaded
+			function trackEvent(name, data) {
+				try {
+					if (window.umami && typeof window.umami.track === 'function') {
+						if (data) window.umami.track(name, data);
+						else      window.umami.track(name);
+					}
+				} catch (e) { /* never break the site over analytics */ }
+			}
+
 		// Custom video interactions (MUST run before poptrox binds its handlers)
 			(function() {
 				var $videoModal    = $('#video-modal');
@@ -125,6 +135,8 @@
 					e.preventDefault();
 					e.stopImmediatePropagation();
 					var src = $(this).attr('data-video') || $(this).attr('href');
+					var title = $(this).siblings('h3').first().text();
+					trackEvent('aigc-play', { work: title || 'AIGC' });
 					videoPlayerEl.setAttribute('src', src);
 					openModal($videoModal);
 					var p = videoPlayerEl.play();
@@ -135,10 +147,25 @@
 				$('#portfolio').on('click.customvideo', 'a.video-external', function(e) {
 					e.preventDefault();
 					e.stopImmediatePropagation();
-					$externalTitle.text($(this).attr('data-title') || 'Open video');
-					$externalLink.attr('href', $(this).attr('href'));
+					var href = $(this).attr('href') || '';
+					var title = $(this).attr('data-title') || 'Open video';
+					// Distinguish winter vs summer by URL
+					var eventName = 'bilibili-jump';
+					if      (href.indexOf('BV1uu4m1u7mR') !== -1) eventName = 'bilibili-winter';
+					else if (href.indexOf('BV1bryYYFE2r') !== -1) eventName = 'bilibili-summer';
+					trackEvent(eventName + '-click', { title: title });
+					$externalTitle.text(title);
+					$externalLink.attr('href', href);
+					// Store event name on the link element so we can track the actual jump below
+					$externalLink.attr('data-bili-event', eventName);
 					openModal($externalModal);
 					return false;
+				});
+
+				// Track Portfolio image views (poptrox-handled, non-video cards)
+				$('#portfolio').on('click', '.work-item a.image:not(.video-play):not(.video-external)', function() {
+					var title = $(this).siblings('h3').first().text();
+					trackEvent('portfolio-view', { work: title || 'untitled' });
 				});
 
 				// Modal close buttons (backdrop / × / cancel)
@@ -147,8 +174,10 @@
 					if (which === 'video')    closeVideoModal();
 					if (which === 'external') closeModal($externalModal);
 				});
-				// "Open on Bilibili" → dismiss modal shortly after
+				// "Open on Bilibili" → track the actual jump + dismiss modal shortly after
 				$externalLink.on('click', function() {
+					var ev = $(this).attr('data-bili-event') || 'bilibili-jump';
+					trackEvent(ev + '-confirm');
 					setTimeout(function() { closeModal($externalModal); }, 50);
 				});
 				// ESC key
