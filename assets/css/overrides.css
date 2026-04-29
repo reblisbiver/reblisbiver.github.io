@@ -1,0 +1,322 @@
+/*
+	Strata Overrides
+	目标：
+	  1) 强制竖版布局（Header 顶部全宽，Main 在下方）
+	  2) 鸟群 Vanta 背景仅出现在 Header
+	  3) 其余区域保持米白奶油纯色
+	  4) 顶部磨砂玻璃导航栏（悬浮 sticky）
+*/
+
+:root {
+	--bg-cream: #F5F0E8;       /* 奶油米白 */
+	--ink-primary: #2B2622;
+	--ink-secondary: #6B645E;
+	--accent: #D4725B;
+	--nav-height: 64px;
+}
+
+/* 平滑滚动到锚点 */
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: var(--nav-height);  /* 锚点滚动时留出导航高度 */
+}
+
+/* ============ 0. 顶部磨砂玻璃导航栏 ============ */
+#topnav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: var(--nav-height);
+	z-index: 100;
+
+	/* 磨砂玻璃效果 */
+	background-color: rgba(245, 240, 232, 0.55);
+	backdrop-filter: blur(14px) saturate(140%);
+	-webkit-backdrop-filter: blur(14px) saturate(140%);
+	border-bottom: 1px solid rgba(43, 38, 34, 0.08);
+	box-shadow: 0 2px 20px rgba(43, 38, 34, 0.04);
+}
+
+#topnav .nav-inner {
+	max-width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+	padding: 0 2.5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2.4em;
+}
+
+#topnav .nav-link {
+	font-family: -apple-system, "Segoe UI", "PingFang SC", sans-serif;
+	font-size: 0.82em;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ink-primary) !important;
+	text-decoration: none;
+	border-bottom: none !important;
+	position: relative;
+	padding: 0.3em 0;
+	transition: color 0.25s ease;
+}
+
+#topnav .nav-link::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -2px;
+	height: 2px;
+	background: var(--accent);
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 0.3s ease;
+}
+
+#topnav .nav-link:hover {
+	color: var(--accent) !important;
+}
+
+#topnav .nav-link:hover::after,
+#topnav .nav-link.active::after {
+	transform: scaleX(1);
+}
+
+#topnav .nav-link.active {
+	color: var(--accent) !important;
+}
+
+/* 响应式：窄屏压缩 */
+@media screen and (max-width: 736px) {
+	#topnav .nav-inner {
+		padding: 0 1em;
+		gap: 1.2em;
+		justify-content: center;
+	}
+	#topnav .nav-link {
+		font-size: 0.7em;
+		letter-spacing: 0.05em;
+	}
+}
+
+/* ============ 1. 强制竖版布局 ============ */
+body, html {
+	background: var(--bg-cream) !important;
+}
+
+#header {
+	position: relative !important;
+	left: auto !important;
+	top: auto !important;
+	width: 100% !important;
+	height: auto !important;
+	min-height: calc(620px + var(--nav-height));  /* 补回被导航占用的高度 */
+	padding: calc(var(--nav-height) + 5em) 3em 7em 3em !important;
+
+	background-color: var(--bg-cream) !important;
+	background-image: none !important;
+
+	display: flex !important;
+	flex-direction: column !important;
+	justify-content: center !important;
+	align-items: center !important;
+	text-align: center !important;
+
+	overflow: hidden;
+	isolation: isolate;
+}
+
+#vanta-bg {
+	position: absolute !important;
+	inset: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	z-index: 0 !important;
+}
+
+#vanta-bg canvas {
+	z-index: 0 !important;
+}
+
+/* 顶部渐变遮罩：让鸟群从导航栏下方柔和淡入 */
+#header > .top-fade,
+#header::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 120px;
+	background: linear-gradient(
+		to bottom,
+		rgba(245, 240, 232, 0.7) 0%,
+		rgba(245, 240, 232, 0.35) 50%,
+		rgba(245, 240, 232, 0) 100%
+	);
+	pointer-events: none;
+	z-index: 2;
+}
+
+/* 底部渐变遮罩：让鸟群自然溶解进下方米白区域 */
+#header::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 220px;
+	background: linear-gradient(
+		to bottom,
+		rgba(245, 240, 232, 0) 0%,
+		rgba(245, 240, 232, 0.25) 30%,
+		rgba(245, 240, 232, 0.6) 55%,
+		rgba(245, 240, 232, 0.9) 80%,
+		rgba(245, 240, 232, 1) 100%
+	);
+	pointer-events: none;
+	z-index: 2;
+}
+
+#header .inner {
+	position: relative;
+	z-index: 3;
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center !important;
+}
+
+#header .avatar,
+#header .image.avatar {
+	display: block !important;
+	margin: 0 auto 1.5em auto !important;
+	width: 128px !important;
+	height: 128px !important;
+	border-radius: 50% !important;
+	overflow: hidden !important;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+	position: relative;
+	padding: 0 !important;
+}
+
+#header .avatar img,
+#header .image.avatar img {
+	position: absolute !important;
+	top: 50% !important;
+	left: 50% !important;
+	transform: translate(-50%, -50%) scale(1.25) !important;
+	width: 100% !important;
+	height: 100% !important;
+	max-width: none !important;
+	object-fit: cover !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	display: block !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+#header h1,
+#header h1 strong {
+	text-align: center !important;
+	color: var(--ink-primary) !important;
+	font-family: Georgia, "Times New Roman", "PingFang SC", serif;
+	line-height: 1.5;
+	text-shadow: 0 1px 2px rgba(245, 240, 232, 0.8);
+}
+
+#header h1 a {
+	color: var(--accent) !important;
+	text-shadow: 0 1px 2px rgba(245, 240, 232, 0.8);
+}
+
+/* ============ 2. Main 区域 ============ */
+#main {
+	position: relative !important;
+	left: auto !important;
+	top: auto !important;
+	width: 100% !important;
+	max-width: 1200px;
+	margin: 0 auto !important;
+	background-color: var(--bg-cream) !important;
+	background-image: none !important;
+	padding: 3em 3em 5em 3em !important;
+}
+
+#main section {
+	border-top-color: rgba(43, 38, 34, 0.08) !important;
+}
+
+/* ============ 3. Footer ============ */
+#footer {
+	position: relative !important;
+	left: auto !important;
+	top: auto !important;
+	width: 100% !important;
+	max-width: 1200px;
+	margin: 0 auto !important;
+	background-color: var(--bg-cream) !important;
+	background-image: none !important;
+	padding: 2em 3em 3em 3em !important;
+}
+
+/* ============ 4. 清理 body 伪元素 ============ */
+body:before,
+body:after,
+body.is-preload:before,
+body.is-preload:after {
+	display: none !important;
+	background: transparent !important;
+}
+
+/* ============ 5. 文字/链接/按钮配色 ============ */
+a {
+	color: var(--accent) !important;
+	border-bottom-color: rgba(212, 114, 91, 0.3) !important;
+}
+
+a:hover {
+	color: #B85E47 !important;
+}
+
+.button {
+	box-shadow: inset 0 0 0 2px var(--ink-primary) !important;
+	color: var(--ink-primary) !important;
+	background-color: transparent !important;
+}
+
+.button:hover {
+	background-color: var(--accent) !important;
+	color: #fff !important;
+	box-shadow: inset 0 0 0 2px var(--accent) !important;
+}
+
+.button.primary {
+	background-color: var(--accent) !important;
+	color: #fff !important;
+	box-shadow: inset 0 0 0 2px var(--accent) !important;
+}
+
+.button.primary:hover {
+	background-color: #B85E47 !important;
+	box-shadow: inset 0 0 0 2px #B85E47 !important;
+}
+
+.icons a:hover {
+	color: var(--accent) !important;
+}
+
+/* ============ 6. 响应式 ============ */
+@media screen and (max-width: 736px) {
+	#header {
+		padding: calc(var(--nav-height) + 3em) 1.5em 4em 1.5em !important;
+		min-height: calc(480px + var(--nav-height));
+	}
+	#main, #footer {
+		padding: 2em 1.5em !important;
+	}
+}
+
