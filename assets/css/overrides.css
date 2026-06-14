@@ -672,6 +672,15 @@ input[type="button"]:active {
    Portfolio v2 — data-driven cards + featured highlight
    ============================================================ */
 
+.portfolio-intro {
+	color: var(--ink-secondary) !important;
+	font-size: 0.78em;
+	font-style: italic;
+	letter-spacing: 0.04em;
+	margin: -0.2em 0 2.2em 0 !important;
+	opacity: 0.8;
+}
+
 /* Masonry grid — JS distributes cards into flex columns (row-major),
    so featured pieces land on the top row; column bottoms stay ragged. */
 .pf-grid {
