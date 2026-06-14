@@ -10,10 +10,18 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/overrides.css" />
+		<link rel="stylesheet" href="assets/css/overrides.css?v=3" />
 		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕊%3C/text%3E%3C/svg%3E" />
-		<!-- Umami Analytics (self-hosted, privacy-friendly, no cookies) -->
-		<script defer src="https://umami-ashen-xi.vercel.app/script.js" data-website-id="ce70d1c5-a07c-4a8a-adcc-c2fe38ce7951"></script>
+		<!-- Umami Analytics (injected after page load so it never blocks rendering) -->
+		<script>
+			window.addEventListener('load', function () {
+				var s = document.createElement('script');
+				s.async = true;
+				s.src = 'https://umami-ashen-xi.vercel.app/script.js';
+				s.setAttribute('data-website-id', 'ce70d1c5-a07c-4a8a-adcc-c2fe38ce7951');
+				document.head.appendChild(s);
+			});
+		</script>
 	</head>
 	<body class="is-preload">
 
@@ -71,128 +79,11 @@
 						<p>Alongside my academic work, I maintain an ongoing practice in visual design — spanning posters, postcards, apparel and event collateral, as well as photography and self-edited video. This website serves as the home of that practice: a curated portfolio of selected works from recent years. Everything featured below was conceived, designed, and produced by me.</p>
 					</section>
 
-				<!-- Two -->
+				<!-- Two: Portfolio (data-driven, rendered by assets/js/portfolio.js) -->
 					<section id="portfolio">
 						<h2>Portfolio</h2>
-						<div class="row">
-
-							<!-- AIGC Video (click → play mp4 in lightbox) -->
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/aigc-milan.mp4" class="image fit thumb video-play" data-poptrox="ignore" data-video="images/portfolio/aigc-milan.mp4">
-									<img src="images/portfolio/thumbs/aigc-milan.png" alt="" />
-									<span class="play-badge" aria-hidden="true">▶</span>
-								</a>
-								<h3>AIGC Video — Milan Winter Olympics</h3>
-								<p>An AI-generated short work created for the Milan–Cortina Winter Olympics Global AIGC Competition. Produced in January 2026.</p>
-							</article>
-
-							<!-- Bilibili Video: Winter Expedition -->
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="https://www.bilibili.com/video/BV1uu4m1u7mR/" class="image fit thumb video-external" data-poptrox="ignore" data-title="If the River Wind Forgets">
-									<img src="images/portfolio/thumbs/video-winter.png" alt="" />
-									<span class="play-badge" aria-hidden="true">▶</span>
-								</a>
-								<h3>If the River Wind Forgets</h3>
-								<p>A 600-kilometre expedition film documenting a cross-regional cycling journey from Hunan to Guangxi, China. Produced in January 2024.</p>
-							</article>
-
-							<!-- Bilibili Video: Summer Expedition -->
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="https://www.bilibili.com/video/BV1bryYYFE2r/" class="image fit thumb video-external" data-poptrox="ignore" data-title="The Road Leads to a Summer Dream Unfinished">
-									<img src="images/portfolio/thumbs/video-summer.png" alt="" />
-									<span class="play-badge" aria-hidden="true">▶</span>
-								</a>
-								<h3>The Road Leads to a Summer Dream Unfinished</h3>
-								<p>A 2,000-kilometre expedition film documenting a cross-regional cycling journey from Guangxi to Yunnan, China. Produced in September 2024.</p>
-							</article>
-
-							<!-- Custom T-shirts -->
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/tshirt-silkroad.png" class="image fit thumb"><img src="images/portfolio/thumbs/tshirt-silkroad.png" alt="" /></a>
-								<h3>Custom T-shirt — Silk Road</h3>
-								<p>Inspired by the Silk Road, commissioned as a sponsor-facing garment. Designed in 2025.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/tshirt-2024.png" class="image fit thumb"><img src="images/portfolio/thumbs/tshirt-2024.png" alt="" /></a>
-								<h3>Custom T-shirt — 2024 Summer Expedition</h3>
-								<p>Team apparel designed for the 2024 Summer Expedition. Designed in June 2024.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/tshirt-2025.jpg" class="image fit thumb"><img src="images/portfolio/thumbs/tshirt-2025.jpg" alt="" /></a>
-								<h3>Custom T-shirt — 2025 China–Kazakhstan Expedition</h3>
-								<p>Team apparel designed for the 2025 China–Kazakhstan Expedition. Designed in June 2025.</p>
-							</article>
-
-							<!-- Custom Hoodie -->
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/hoodie.png" class="image fit thumb"><img src="images/portfolio/thumbs/hoodie.png" alt="" /></a>
-								<h3>Custom Hoodie — Department of Psychology</h3>
-								<p>Official hoodie designed for the Department of Psychology. Designed in October 2025.</p>
-							</article>
-
-							<!-- Promotional Flag -->
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/flag-promo.png" class="image fit thumb"><img src="images/portfolio/thumbs/flag-promo.png" alt="" /></a>
-								<h3>Promotional Flag</h3>
-								<p>Event flag developed for formal communication and brand exposure. Designed in June 2025.</p>
-							</article>
-
-							<!-- Posters -->
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/poster.jpg" class="image fit thumb"><img src="images/portfolio/thumbs/poster.jpg" alt="" /></a>
-								<h3>Forum Poster</h3>
-								<p>Key visual created for a formal academic forum. Designed in November 2024.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/poster-album.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-album.png" alt="" /></a>
-								<h3>Album Cover</h3>
-								<p>Cover artwork developed as an independent conceptual piece. Designed in 2025.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/poster-shangri-la.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-shangri-la.png" alt="" /></a>
-								<h3>"Shangri-La" Postcard</h3>
-								<p>Postcard composed from original photography of the Shangri-La landscape. Designed in September 2025.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/poster-citygod.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-citygod.png" alt="" /></a>
-								<h3>City God</h3>
-								<p>Postcard depicting the traditional Chinese City God (Chenghuang). Designed in September 2025.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/poster-teacher.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-teacher.png" alt="" /></a>
-								<h3>Teacher</h3>
-								<p>Postcard expressing the enduring bond between master and disciple. Designed in September 2025.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/poster-bipolardisorder.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-bipolardisorder.png" alt="" /></a>
-								<h3>Bipolar Disorder</h3>
-								<p>Poster exploring the emotional landscape of bipolar disorder through visual metaphor. Designed in September 2025.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/poster-money.png" class="image fit thumb"><img src="images/portfolio/thumbs/poster-money.png" alt="" /></a>
-								<h3>Money or Poison</h3>
-								<p>Postcard inspired by <i>The Wolf of Wall Street</i>, reflecting on wealth and value. Designed in September 2025.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/poster-projectreport.jpg" class="image fit thumb"><img src="images/portfolio/thumbs/poster-projectreport.jpg" alt="" /></a>
-								<h3>Poster for Project Report</h3>
-								<p>Cover visual designed for an academic project report. Designed in May 2025.</p>
-							</article>
-
-							<!-- Graphic Design -->
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/graphicdesign-solarsystem.png" class="image fit thumb"><img src="images/portfolio/thumbs/graphicdesign-solarsystem.png" alt="" /></a>
-								<h3>Solar System — Graphic Design</h3>
-								<p>Illustrative graphic piece based on the solar system, created in Adobe Illustrator. Designed in October 2025.</p>
-							</article>
-
-							<!-- Invitation Card -->
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/portfolio/invitation.jpg" class="image fit thumb"><img src="images/portfolio/thumbs/invitation.jpg" alt="" /></a>
-								<h3>Wedding Invitation Card</h3>
-								<p>Bespoke wedding invitation commissioned by a private client — a step toward monetising personal artistic practice. Designed in December 2025.</p>
-							</article>
-
+						<div id="portfolio-grid" class="pf-grid">
+							<p class="pf-loading">Loading projects…</p>
 						</div>
 					</section>
 
@@ -565,6 +456,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/portfolio.js?v=2"></script>
 
 		<!-- Vanta Birds Background (local) -->
 			<script src="assets/js/three.min.js"></script>

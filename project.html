@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<!--
+	Project detail page (data-driven via ?id=)
+	Renders a single project from assets/data/projects.json
+-->
+<html>
+	<head>
+		<title>Project — Darwin</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/overrides.css?v=3" />
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕊%3C/text%3E%3C/svg%3E" />
+		<!-- Umami Analytics (injected after page load so it never blocks rendering) -->
+		<script>
+			window.addEventListener('load', function () {
+				var s = document.createElement('script');
+				s.async = true;
+				s.src = 'https://umami-ashen-xi.vercel.app/script.js';
+				s.setAttribute('data-website-id', 'ce70d1c5-a07c-4a8a-adcc-c2fe38ce7951');
+				document.head.appendChild(s);
+			});
+		</script>
+	</head>
+	<body class="project-page">
+
+		<!-- Top bar: minimal nav (back + print) -->
+		<nav class="project-topbar">
+			<a href="index.html#portfolio" class="project-back">&larr; Back to Portfolio</a>
+			<button id="print-btn" class="project-print" type="button">Save as PDF</button>
+		</nav>
+
+		<!-- Project content (rendered by project.js) -->
+		<main id="project-root" class="project-root">
+			<p class="project-loading">Loading…</p>
+		</main>
+
+		<!-- Prev / Next navigation -->
+		<nav id="project-nav" class="project-nav"></nav>
+
+		<!-- Image zoom overlay -->
+		<div id="zoom-overlay" class="zoom-overlay" aria-hidden="true">
+			<img id="zoom-img" alt="" />
+		</div>
+
+		<script src="assets/js/project.js?v=5"></script>
+	</body>
+</html>
