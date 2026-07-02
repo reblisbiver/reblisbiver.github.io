@@ -284,6 +284,44 @@
       "role": "Designer",
       "background": "A bespoke wedding invitation commissioned by a private client.",
       "contribution": "I designed it to the couple's brief — an early step toward turning personal creative practice into paid work."
+    },
+    {
+      "id": "aym-education",
+      "type": "simple",
+      "featured": false,
+      "orientation": "landscape",
+      "title": "Rural Education Revolution in Africa",
+      "category": "AIGC Video",
+      "cover": "https://img.youtube.com/vi/ZB-96YsQ_bM/maxresdefault.jpg",
+      "hero": "https://img.youtube.com/vi/ZB-96YsQ_bM/maxresdefault.jpg",
+      "date": "June 2026",
+      "tools": ["Seedream", "Pavo", "CapCut"],
+      "role": "Creator · AI Video · Editor",
+      "background": "A short AI-generated documentary made for the Twenty-First Century African Youth Movement (AYM) and its Voices of the EMERGING Africa initiative. Across rural Africa, countless children dream of becoming doctors and engineers yet lack qualified science teachers and learning resources. Told through the eyes of a child, the film shares a perspective on hope, learning, and the future — and shows how AYM's hybrid model, pairing physical community centres with mobile technology, is working to close that gap.",
+      "contribution": "I produced the film end to end and entirely on my own — from concept and scripting through AI-generated visuals to the final cut. I built each shot with an image-to-video pipeline — generating the key frames with ByteDance's Seedream (via Jimeng) and bringing them to life through Pavo — then paired the footage with AI narration and assembled, paced and scored the whole piece in CapCut, aiming for a grassroots, youth-led story that still holds a cinematic standard.",
+      "deliverables": {
+        "links": [{ "label": "Watch on YouTube", "url": "https://www.youtube.com/watch?v=ZB-96YsQ_bM" }]
+      },
+      "outcomes": "Released on YouTube as part of AYM's youth-led advocacy for the Rural Education Revolution, the documentary was made to carry the story to a wider audience of supporters, partners and prospective donors — and to show that AI-assisted, independently produced film can bring a global-quality voice to a grassroots cause."
+    },
+    {
+      "id": "cashew-documentary",
+      "type": "simple",
+      "featured": false,
+      "orientation": "landscape",
+      "title": "CASHEW: The Golden Opportunity West Africa Is Giving Away",
+      "category": "AIGC Video",
+      "cover": "https://img.youtube.com/vi/zcUEFjIRjWQ/maxresdefault.jpg",
+      "hero": "https://img.youtube.com/vi/zcUEFjIRjWQ/maxresdefault.jpg",
+      "date": "June 2026",
+      "tools": ["Seedream", "Pavo", "CapCut"],
+      "role": "Creator · AI Video · Editor",
+      "background": "An AI-generated documentary produced for the Twenty-First Century African Youth Movement (AYM) and its Voices of the EMERGING Africa initiative. West Africa grows more than half of the world's raw cashews, yet processes less than a tenth of its own harvest — so most of the nuts, along with the jobs and value they carry, are shipped overseas. The film explores how local cashew processing could turn youth unemployment into industrial growth, arguing that the future of African agriculture lies not just in farming, but in building entire industries around what the continent grows.",
+      "contribution": "I created the documentary single-handedly, from concept and narrative through to final delivery. Working from the project's script, I built the visuals with an image-to-video pipeline — generating cinematic frames of West African landscapes, factories and farming communities with ByteDance's Seedream (via Jimeng), then animating them through Pavo — integrated AI voiceover, and handled all editing, pacing, motion graphics and sound design in CapCut to make dense economic ideas feel accessible and cinematic.",
+      "deliverables": {
+        "links": [{ "label": "Watch on YouTube", "url": "https://www.youtube.com/watch?v=zcUEFjIRjWQ" }]
+      },
+      "outcomes": "Published on YouTube as a centrepiece for AYM's advocacy, the film was built to reach policymakers, investors and young entrepreneurs — reframing agriculture as a gateway to industrialisation, and demonstrating that a grassroots, AI-driven production can hold its own against global media standards."
     }
   ]
 }
