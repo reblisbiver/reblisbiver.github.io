@@ -1132,7 +1132,11 @@ body.project-page {
 
 /* Inline emphasis in project detail text (organisations, channels, names…) */
 .project-body .pd-hl {
-	font-weight: 700;
+	text-decoration: underline;
+	text-decoration-style: dashed;
+	text-decoration-thickness: 1px;
+	text-decoration-color: var(--accent);
+	text-underline-offset: 3px;
 }
 
 
