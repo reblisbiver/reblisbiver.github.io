@@ -1,6 +1,25 @@
 {
   "projects": [
     {
+      "id": "cashew-documentary",
+      "type": "featured",
+      "featured": true,
+      "orientation": "landscape",
+      "title": "CASHEW: The Golden Opportunity West Africa Is Giving Away",
+      "category": "AIGC Video",
+      "cover": "https://img.youtube.com/vi/vFT8wWxR5WI/maxresdefault.jpg",
+      "hero": "https://img.youtube.com/vi/vFT8wWxR5WI/maxresdefault.jpg",
+      "date": "June 2026",
+      "tools": ["Seedream", "Pavo", "CapCut"],
+      "role": "Video Producer · AI Visuals · Editor",
+      "background": "An AI-generated documentary that follows the journey of the cashew nut — from the fertile lands of **Sierra Leone** to the global processing markets of **India** and **Vietnam** — to expose a value-addition gap at the heart of West Africa's economy. Africa grows more than half of the world's raw cashews yet processes less than 10% of its own harvest, so the industrial value, and the millions of jobs that come with it, flow overseas. The film makes the case that shifting from raw exports to local processing can create jobs, strengthen communities, and turn agriculture into a pathway to industrialisation.",
+      "contribution": "I produced the entire video single-handedly, taking a written script and turning it into a finished cinematic documentary. I built every shot through an image-to-video pipeline — generating cinematic frames of West African landscapes, factories and farming communities with ByteDance's **Seedream** (via Jimeng), then animating them through **Pavo** — before integrating AI voiceover and handling all editing, pacing, motion graphics and sound design in **CapCut**. The project was created for the **Twenty-First Century African Youth Movement** through the **United Nations Online Volunteering Service**, working from a script by the movement's **Abu-Hassan Koroma**.",
+      "deliverables": {
+        "links": [{ "label": "Watch on YouTube", "url": "https://www.youtube.com/watch?v=vFT8wWxR5WI" }]
+      },
+      "outcomes": "Published on the **Voices of the EMERGING Africa** YouTube channel, the documentary now anchors the movement's advocacy — reframing agriculture as a gateway to industrialisation for policymakers, investors and young entrepreneurs, and showing that a grassroots, AI-driven production can hold its own against global media standards."
+    },
+    {
       "id": "summer-dream",
       "type": "featured",
       "featured": true,
@@ -303,25 +322,6 @@
         "links": [{ "label": "Watch on YouTube", "url": "https://www.youtube.com/watch?v=ZB-96YsQ_bM" }]
       },
       "outcomes": "Released on YouTube as part of AYM's youth-led advocacy for the Rural Education Revolution, the documentary was made to carry the story to a wider audience of supporters, partners and prospective donors — and to show that AI-assisted, independently produced film can bring a global-quality voice to a grassroots cause."
-    },
-    {
-      "id": "cashew-documentary",
-      "type": "featured",
-      "featured": true,
-      "orientation": "landscape",
-      "title": "CASHEW: The Golden Opportunity West Africa Is Giving Away",
-      "category": "AIGC Video",
-      "cover": "https://img.youtube.com/vi/vFT8wWxR5WI/maxresdefault.jpg",
-      "hero": "https://img.youtube.com/vi/vFT8wWxR5WI/maxresdefault.jpg",
-      "date": "June 2026",
-      "tools": ["Seedream", "Pavo", "CapCut"],
-      "role": "Video Producer · AI Visuals · Editor",
-      "background": "An AI-generated documentary that follows the journey of the cashew nut — from the fertile lands of Sierra Leone to the global processing markets of India and Vietnam — to expose a value-addition gap at the heart of West Africa's economy. Africa grows more than half of the world's raw cashews yet processes less than 10% of its own harvest, so the industrial value, and the millions of jobs that come with it, flow overseas. The film makes the case that shifting from raw exports to local processing can create jobs, strengthen communities, and turn agriculture into a pathway to industrialisation.",
-      "contribution": "I produced the entire video single-handedly, taking a written script and turning it into a finished cinematic documentary. I built every shot through an image-to-video pipeline — generating cinematic frames of West African landscapes, factories and farming communities with ByteDance's Seedream (via Jimeng), then animating them through Pavo — before integrating AI voiceover and handling all editing, pacing, motion graphics and sound design in CapCut. The project was created for the Twenty-First Century African Youth Movement through the United Nations Online Volunteering Service, working from a script by the movement's Abu-Hassan Koroma.",
-      "deliverables": {
-        "links": [{ "label": "Watch on YouTube", "url": "https://www.youtube.com/watch?v=vFT8wWxR5WI" }]
-      },
-      "outcomes": "Published on the Voices of the EMERGING Africa YouTube channel, the documentary now anchors the movement's advocacy — reframing agriculture as a gateway to industrialisation for policymakers, investors and young entrepreneurs, and showing that a grassroots, AI-driven production can hold its own against global media standards."
     }
   ]
 }

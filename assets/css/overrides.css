@@ -1130,4 +1130,9 @@ body.project-page {
 	a[href]:after { content: ""; }
 }
 
+/* Inline emphasis in project detail text (organisations, channels, names…) */
+.project-body .pd-hl {
+	font-weight: 700;
+}
+
 

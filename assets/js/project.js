@@ -26,10 +26,15 @@
 		return new URLSearchParams(window.location.search).get('id');
 	}
 
+	// Inline formatting applied to ALREADY-escaped text: **word** -> highlighted span
+	function inline(s) {
+		return String(s).replace(/\*\*([^*]+)\*\*/g, '<span class="pd-hl">$1</span>');
+	}
+
 	// Split text on blank lines / newlines into paragraphs
 	function paragraphs(text) {
 		return String(text || '').split(/\n{1,}/).map(function (t) { return t.trim(); })
-			.filter(Boolean).map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('');
+			.filter(Boolean).map(function (t) { return '<p>' + inline(esc(t)) + '</p>'; }).join('');
 	}
 
 	function section(title, text) {
