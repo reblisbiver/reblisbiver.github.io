@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "cites-social",
+      "type": "featured",
+      "featured": true,
+      "orientation": "landscape",
+      "title": "CITES Social Media — Species Spotlight & Nature's Pharmacy (Unofficial Concept Samples)",
+      "category": "Social Media",
+      "cover": "images/portfolio/cites/linkedin-1-ginseng.jpg",
+      "hero": "images/portfolio/cites/linkedin-1-ginseng.jpg",
+      "date": "July 2026",
+      "tools": ["Adobe Photoshop"],
+      "role": "Visual Designer · Social Media Concept Creator",
+      "background": "**Concept social media posts** I designed to support my application to the **CITES Secretariat** internship. The set spans two parallel series: a LinkedIn carousel on CITES-listed medicinal plants (\"Nature's Pharmacy\") and an Instagram trilingual series on the snowdrop (\"Species Spotlight\"). Both were published on my personal account, with a clear disclaimer that the posts are concept samples and are not official CITES content or endorsed by the Secretariat.",
+      "contribution": "I served as the **visual designer and social media concept creator** on this project, handling every visual in the set — from copy and layout to typography and image treatment, working in **Adobe Photoshop**. I built two parallel series — a three-slide LinkedIn carousel on CITES-listed medicinal plants (American ginseng, Hoodia, and African cherry), and a three-language Instagram series on the snowdrop (English, French, Spanish) — translating technical species information into accessible, social-first posts.",
+      "deliverables": {
+        "galleries": [
+          {
+            "title": "LinkedIn · Nature's Pharmacy",
+            "items": [
+              { "src": "images/portfolio/cites/linkedin-live.png", "caption": "Live post (as published)" },
+              { "src": "images/portfolio/cites/linkedin-1-ginseng.jpg", "caption": "Designed slide 1 · American ginseng (Appendix II)" },
+              { "src": "images/portfolio/cites/linkedin-2-hoodia.jpg", "caption": "Designed slide 2 · Hoodia (Appendix II)" },
+              { "src": "images/portfolio/cites/linkedin-3-cherry.jpg", "caption": "Designed slide 3 · African cherry (Appendix II)" }
+            ]
+          },
+          {
+            "title": "Instagram · Species Spotlight — The Snowdrop (EN / FR / ES)",
+            "items": [
+              { "src": "images/portfolio/cites/instagram-live-en.png", "caption": "Live post · English" },
+              { "src": "images/portfolio/cites/instagram-live-fr.png", "caption": "Live post · French" },
+              { "src": "images/portfolio/cites/instagram-live-es.png", "caption": "Live post · Spanish" },
+              { "src": "images/portfolio/cites/instagram-design-en.jpg", "caption": "Designed image · English" },
+              { "src": "images/portfolio/cites/instagram-design-fr.jpg", "caption": "Designed image · French" },
+              { "src": "images/portfolio/cites/instagram-design-es.jpg", "caption": "Designed image · Spanish" }
+            ]
+          }
+        ],
+        "links": [
+          { "label": "LinkedIn Live Post", "url": "https://www.linkedin.com/posts/daowen-zhang-045152353_cites-wildlifetrade-conservation-ugcPost-7482122368245723136-s_Sk/" },
+          { "label": "Instagram Live Post", "url": "https://www.instagram.com/p/Datsvp-kwZc/" }
+        ]
+      },
+      "outcomes": "Published on my personal social accounts as **concept samples** accompanying my application, with a clear disclaimer that they are not official CITES content. The internship outcome is pending.\n\nSoftware and Design Process\nAll images were designed in **Adobe Photoshop**. My process and main considerations were:\n- I studied **CITES's own social media posts** to understand their tone and visual style, and designed the images to be consistent with it — with clear species labelling (common name plus the scientific name in italics), the CITES Appendix level, and a credit line for each photo.\n- I adapted each sample to its platform: the **LinkedIn** piece is a multi-image carousel with a longer caption, and the **Instagram** piece focuses on a single species with the on-image text in the three official CITES languages — **English**, **French** and **Spanish**.\n- All photos are from **Wikimedia Commons** under open licenses (public domain, CC BY, CC BY-SA). I credited each one and, for share-alike images, noted the adaptation and matched the licence.\n- I also wrote **alt text** for the images, as an accessibility step.\n- Every claim printed on the images is backed by a **source**."
+    },
+    {
       "id": "cashew-documentary",
       "type": "featured",
       "featured": true,
