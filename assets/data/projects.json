@@ -64,9 +64,28 @@
       "outcomes": "Published on the **Voices of the EMERGING Africa** YouTube channel, the documentary now anchors the movement's advocacy — reframing agriculture as a gateway to industrialisation for policymakers, investors and young entrepreneurs, and showing that a grassroots, AI-driven production can hold its own against global media standards."
     },
     {
-      "id": "summer-dream",
+      "id": "before-54-nations",
       "type": "featured",
       "featured": true,
+      "orientation": "landscape",
+      "title": "Before the 54 Nations | The Forgotten Africa",
+      "category": "AIGC Video",
+      "cover": "https://img.youtube.com/vi/K6th0vTHRFw/maxresdefault.jpg",
+      "hero": "https://img.youtube.com/vi/K6th0vTHRFw/maxresdefault.jpg",
+      "date": "July 2026",
+      "tools": ["Seedream", "Pavo", "CapCut"],
+      "role": "Video Producer · AI Visuals · Editor",
+      "background": "**An AI-generated documentary** for **Voices of the EMERGING Africa** that looks beyond the modern political map to recover Africa's deeper civilisational memory. Before passports, colonial borders and the 54 nations of today, the continent was shaped by movement, trade and shared humanity. The film connects that history to the present, asking how enduring African principles can inform responses to 21st-century challenges and strengthen a more self-defined continental narrative.",
+      "contribution": "I served as the **video editor and AI content creator**, turning the documentary concept into a finished cinematic film. I built every shot through an image-to-video pipeline — generating cinematic frames with ByteDance's **Seedream** (via Jimeng), then animating them through **Pavo** — before integrating AI voiceover and handling the edit, pacing, motion graphics and sound design in **CapCut**. The project was created for the **Twenty-First Century African Youth Movement** through the **United Nations Online Volunteering Service**.",
+      "deliverables": {
+        "links": [{ "label": "Watch on YouTube", "url": "https://www.youtube.com/watch?v=K6th0vTHRFw" }]
+      },
+      "outcomes": "Published on the **Voices of the EMERGING Africa** YouTube channel, the film begins a wider public conversation about Africa's history, identity and narrative power. It gives the movement a cinematic advocacy asset that frames African civilisation not as a story bounded by colonial-era maps, but as a living source of ideas for the continent's future."
+    },
+    {
+      "id": "summer-dream",
+      "type": "simple",
+      "featured": false,
       "orientation": "landscape",
       "title": "The Road Leads to a Summer Dream Unfinished",
       "category": "Video",
