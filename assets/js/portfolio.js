@@ -28,7 +28,7 @@
 		var badge = featured ? '<span class="pf-badge">\u2605 Featured</span>' : '';
 		var cat = [p.category, p.date].filter(Boolean).join(' \u00b7 ');
 		return '' +
-			'<a class="pf-card' + (featured ? ' is-featured' : '') + '" href="project.html?id=' + encodeURIComponent(p.id) + '">' +
+			'<a class="pf-card' + (featured ? ' is-featured' : '') + '" data-pf-order="' + esc(p._pfOrder) + '" href="project.html?id=' + encodeURIComponent(p.id) + '">' +
 				'<span class="pf-thumb">' +
 					'<img src="' + esc(p.cover) + '" alt="' + esc(p.title) + '" loading="lazy" />' +
 					badge +
@@ -48,12 +48,97 @@
 		// Featured first, otherwise keep JSON order (stable sort in modern browsers)
 		var sorted = projects.slice().sort(function (a, b) {
 			return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+		}).map(function (project, index) {
+			project._pfOrder = index;
+			return project;
 		});
 
 		var lastCols = 0;
+		var balanceTimer;
 
-		// Row-major distribution into N columns: keeps the masonry look (ragged bottoms)
-		// while guaranteeing the featured pieces land on the top row(s).
+		// Keep featured projects at the front, then place cards from tallest to
+		// shortest into the current shortest column to avoid a large bottom gap.
+		var balancing = false;
+		function balanceColumns() {
+			if (balancing) return;
+			balancing = true;
+			try {
+				_doBalance();
+			} finally {
+				balancing = false;
+			}
+		}
+		function _doBalance() {
+			var columns = Array.prototype.slice.call(grid.querySelectorAll('.pf-col'));
+			if (!columns.length) return;
+
+			// Deduplicate: keep only one copy of each card (by data-pf-order).
+			var seen = {};
+			var allCards = Array.prototype.slice.call(grid.querySelectorAll('.pf-card'));
+			allCards.forEach(function (card) {
+				var order = card.getAttribute('data-pf-order');
+				if (seen[order]) {
+					card.parentNode.removeChild(card);
+				} else {
+					seen[order] = card;
+				}
+			});
+
+			var cards = Object.keys(seen).map(function (key) {
+				var card = seen[key];
+				return {
+					card: card,
+					featured: card.classList.contains('is-featured'),
+					order: Number(card.getAttribute('data-pf-order')),
+					height: card.offsetHeight
+				};
+			}).sort(function (a, b) {
+				return a.order - b.order;
+			});
+			var featured = cards.filter(function (item) { return item.featured; });
+			var standard = cards.filter(function (item) { return !item.featured; });
+			cards.forEach(function (item) { item.card.parentNode.removeChild(item.card); });
+
+			featured.slice(0, columns.length).forEach(function (item, index) {
+				columns[index].appendChild(item.card);
+			});
+
+			function distribute(items) {
+				items.sort(function (a, b) {
+					return b.height - a.height || a.order - b.order;
+				}).forEach(function (item) {
+					// Find the shortest column that doesn't already have
+					// 2+ more cards than the fewest, to keep counts balanced.
+					var counts = columns.map(function (c) { return c.querySelectorAll('.pf-card').length; });
+					var minCount = Math.min.apply(null, counts);
+					var shortest = null;
+					columns.forEach(function (column, i) {
+						var isEligible = counts[i] < minCount + 2;
+						if (!isEligible) return;
+						if (!shortest || column.offsetHeight < shortest.offsetHeight) {
+							shortest = column;
+						}
+					});
+					// Fallback: if all columns are too full, use the shortest.
+					if (!shortest) {
+						shortest = columns[0];
+						columns.forEach(function (column) {
+							if (column.offsetHeight < shortest.offsetHeight) shortest = column;
+						});
+					}
+					shortest.appendChild(item.card);
+				});
+			}
+
+			distribute(featured.slice(columns.length));
+			distribute(standard);
+		}
+
+		function scheduleBalance() {
+			clearTimeout(balanceTimer);
+			balanceTimer = setTimeout(balanceColumns, 100);
+		}
+
 		function columnsForWidth() {
 			var w = window.innerWidth;
 			if (w <= 480) return 1;
@@ -63,18 +148,27 @@
 
 		function layout() {
 			var cols = columnsForWidth();
-			if (cols === lastCols) return;
-			lastCols = cols;
-			var colHTML = '';
-			for (var c = 0; c < cols; c++) colHTML += '<div class="pf-col"></div>';
-			grid.innerHTML = colHTML;
-			var colEls = grid.querySelectorAll('.pf-col');
-			sorted.forEach(function (p, i) {
-				colEls[i % cols].insertAdjacentHTML('beforeend', cardHTML(p));
-			});
+			if (cols !== lastCols) {
+				lastCols = cols;
+				var colHTML = '';
+				for (var c = 0; c < cols; c++) colHTML += '<div class="pf-col"></div>';
+				grid.innerHTML = colHTML;
+				var colEls = grid.querySelectorAll('.pf-col');
+				sorted.forEach(function (p, i) {
+					colEls[i % cols].insertAdjacentHTML('beforeend', cardHTML(p));
+				});
+			}
+			scheduleBalance();
 		}
 
 		layout();
+
+		window.addEventListener('load', function () {
+			setTimeout(scheduleBalance, 250);
+		});
+		grid.addEventListener('load', function (e) {
+			if (e.target.tagName === 'IMG') scheduleBalance();
+		}, true);
 
 		var resizeTimer;
 		window.addEventListener('resize', function () {

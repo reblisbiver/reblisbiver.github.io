@@ -17,3 +17,6 @@ Thumbs.db
 
 # 日志
 *.log
+
+# 子项目：neural-computation（独立 git 仓库，勿纳入本仓库）
+/neural-computation/
